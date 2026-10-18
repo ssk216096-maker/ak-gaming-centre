@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AK Gaming Lounge | Madurai</title>
+  <meta name="description" content="Step into AK Gaming Lounge in Madurai for an immersive gaming experience. Bring your friends, pick your game, and book a session.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#top" class="logo"><img src="assets/logo.jpg" alt="AK Gaming Lounge" width="56" height="56"></a>
+    <nav>
+      <a href="#experience">Experience</a>
+      <a href="#games">Games</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#visit">Visit</a>
+      <a href="#book" class="btn btn-small">Book a session</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <img src="assets/interior.jpg" alt="" loading="eager">
+      </div>
+      <p class="hero-meta">Madurai, Tamil Nadu · AK Gaming Lounge</p>
+      <h1 class="split">YOUR GAME. YOUR ARENA.</h1>
+      <p class="lead">Step into AK Gaming Lounge for an immersive gaming experience. Bring your friends, pick your game, and make every session count.</p>
+      <div class="hero-actions">
+        <a href="#book" class="btn btn-primary">Book a session</a>
+        <a href="#games" class="btn">Explore games</a>
+      </div>
+      <p class="open-status" data-status>Checking opening hours…</p>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-head" data-reveal>
+        <h2>The Gaming Experience</h2>
+        <p class="muted">What guests say about their time at the lounge.</p>
+      </div>
+      <div class="stations" data-reveal>
+        <article class="station">
+          <h3>PlayStation 5</h3>
+          <p>PS5 gaming is mentioned often in customer feedback.</p>
+        </article>
+        <article class="station">
+          <h3>Play with friends</h3>
+          <p>Guests describe spending time gaming together with friends.</p>
+        </article>
+        <article class="station">
+          <h3>Clean and comfortable</h3>
+          <p>Reviews describe a clean, comfortable atmosphere.</p>
+        </article>
+        <article class="station">
+          <h3>Helpful staff</h3>
+          <p>Reviews mention helpful staff.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reviews" id="reviews">
+      <div class="section-head" data-reveal>
+        <h2>Reviews</h2>
+        <p class="muted" id="review-stats"></p>
+      </div>
+      <div class="reviews-body" data-reveal>
+        <p class="reviews-lede">Guests often mention:</p>
+        <ul class="review-themes" id="review-themes"></ul>
+        <a class="btn btn-primary" data-reviews target="_blank" rel="noopener">Read reviews on Google</a>
+      </div>
+    </section>
+
+    <section class="section" id="games">
+      <div class="section-head" data-reveal>
+        <h2>The lineup</h2>
+        <div class="chips" role="tablist" aria-label="Filter games by genre" id="genre-chips"></div>
+      </div>
+      <div class="games" id="games-grid"></div>
+      <p class="muted games-note" data-reveal>Every title is on PS5. Lineup can change, so call us to check before you visit.</p>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="section-head" data-reveal>
+        <h2>Sessions and pricing</h2>
+      </div>
+      <div class="plans" id="pricing-grid"></div>
+    </section>
+
+    <section class="section book" id="book">
+      <div data-reveal>
+        <h2>Book a session</h2>
+        <p class="muted book-copy">Send your preferred time and session length. Our team confirms your booking by phone. Requests are not confirmed until we respond.</p>
+        <div class="ticket" id="ticket" hidden>
+          <p class="ticket-label">Booking enquiry submitted</p>
+          <p class="ticket-id" id="t-id"></p>
+          <p id="t-time"></p>
+          <p id="t-session"></p>
+          <p id="t-players"></p>
+          <p class="ticket-note">Not confirmed yet. We will confirm by phone. For a faster answer, call <span data-phone></span>.</p>
+        </div>
+      </div>
+
+      <form id="book-form" class="form" data-reveal novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" autocomplete="name" minlength="2" maxlength="60" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210" required>
+        </div>
+        <div class="field">
+          <label for="email">Email (optional)</label>
+          <input id="email" name="email" type="email" autocomplete="email" maxlength="120">
+        </div>
+        <div class="field">
+          <label for="start">Preferred date and time (IST)</label>
+          <input id="start" name="start" type="datetime-local" required>
+        </div>
+        <div class="field">
+          <label for="players">Number of players</label>
+          <select id="players" name="players"></select>
+        </div>
+        <div class="field">
+          <label for="hours">Session length</label>
+          <select id="hours" name="hours"></select>
+        </div>
+        <div class="field full">
+          <label for="game">Game preference (optional)</label>
+          <select id="game" name="game">
+            <option value="">No preference</option>
+          </select>
+        </div>
+        <p id="form-msg" class="form-msg" role="status" aria-live="polite"></p>
+        <button class="btn btn-primary full" type="submit">Send booking enquiry</button>
+      </form>
+    </section>
+
+    <section class="section visit" id="visit">
+      <div class="section-head" data-reveal>
+        <h2>Visit us</h2>
+        <p class="open-status visit-status" data-status></p>
+      </div>
+
+      <div class="visit-grid">
+        <div class="visit-card" data-reveal>
+          <p class="visit-label">Address</p>
+          <p class="visit-address"><strong data-name></strong><br><span data-address></span></p>
+          <p class="visit-label">Phone</p>
+          <p><a class="text-link" data-tel data-phone></a></p>
+          <div class="visit-actions">
+            <a class="btn btn-primary" data-tel>Call now</a>
+            <a class="btn" data-directions target="_blank" rel="noopener">Get directions</a>
+            <a class="btn" data-maps target="_blank" rel="noopener">Open in Google Maps</a>
+            <button class="btn" type="button" id="copy-address">Copy address</button>
+            <a class="btn" href="#book">Send an enquiry</a>
+            <a class="btn" data-instagram target="_blank" rel="noopener">Follow on Instagram</a>
+          </div>
+        </div>
+
+        <div class="visit-card" data-reveal>
+          <p class="visit-label">Opening hours</p>
+          <dl class="hours-list" id="hours-list"></dl>
+          <p class="visit-label">Google reviews</p>
+          <p class="muted">Read what guests say on our Google listing.</p>
+          <a class="btn" data-reviews target="_blank" rel="noopener">Read reviews on Google</a>
+        </div>
+      </div>
+    </section>
+    <section class="section faq" id="faq">
+      <div class="section-head" data-reveal>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list" id="faq-list" data-reveal></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>&copy; <span id="year"></span> AK Gaming Lounge</span>
+    <span>17, Theni Road, Arasaradi, Arappalayam, Madurai, Tamil Nadu 625016, India</span>
+    <span data-phone></span>
+    <a class="text-link" data-instagram target="_blank" rel="noopener">Instagram</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
